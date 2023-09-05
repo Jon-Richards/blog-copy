@@ -15,14 +15,17 @@ const sourceHTML = path.resolve(__dirname, '..', 'src', `${name}.html`);
 const distHTML = path.resolve(__dirname, '..', 'dist', `${name}.html`);
 const CHECKMARK = '\u2713';
 
+/*
 fs.copyFile(sourceHTML, distHTML, () => console.log(
     `${CHECKMARK} HTML build complete.`));
+*/
 
-const sourceSASS = path.resolve(__dirname, '..', 'src', 'scss', `${name}.scss`);
+const sourceSASS = path.resolve(
+    __dirname, '..', 'doc', 'src', 'scss', `${name}.scss`);
 const renderedSASS = sass.compile(sourceSASS);
 
 fs.writeFile(
-  path.resolve(__dirname, '..', 'dist', `${name}.css`),
+  path.resolve(__dirname, '..', 'public', `${name}.css`),
   renderedSASS.css,
   {},
   () => console.log(`${CHECKMARK} SASS build complete.`)
@@ -30,12 +33,14 @@ fs.writeFile(
 
 async function buildTS() {
   await esbuild.build({
-    entryPoints: [path.resolve(__dirname, '..', 'src', 'ts', `${name}.ts`)],
+    entryPoints: [
+      path.resolve(__dirname, '..', 'doc', 'src', 'ts', `${name}.ts`)
+    ],
     bundle: true,
     minify: true,
     sourcemap: true,
     target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
-    outfile: path.resolve(__dirname, '..', 'dist', `${name}.js`)
+    outfile: path.resolve(__dirname, '..', 'doc', 'public', `${name}.js`)
   });
 }
 
