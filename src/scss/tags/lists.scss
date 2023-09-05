@@ -1,0 +1,190 @@
+@use 'sass:map';
+@use '../utils/breakpoints' as *;
+@use '../utils/colors' as *;
+@use '../utils/fonts';
+@use '../utils/spacing' as *;
+
+@mixin _nested-ol {
+  ol {
+    margin-bottom: 0;
+  }
+  ol li {
+    list-style-type: lower-roman;
+  }
+}
+
+@mixin _nested-ul {
+  ul {
+    margin-bottom: 0;
+  }
+  ul li {
+    list-style-type: square;
+
+    &::marker {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@mixin lists {
+  ol {
+    margin-bottom: get-spacing('whitespace', 'petite');
+  }
+
+  ol li {
+    font-size: 1.4rem;
+    list-style-type: decimal;
+    margin-bottom: 0.4rem;
+    margin-left: 1.4rem;
+    padding-left: 0.4rem;
+
+    &::marker {
+      font-size: 1rem;
+      font-weight: 700;
+
+      @include set-color-schemes((
+        'light': (
+          'color': get-color('accent', 'mid')
+        ),
+        'dark': (
+          'color': get-color('accent', 'mid')
+        )
+      ));
+    }
+
+    p {
+      font-size: inherit;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    @include _nested-ol;
+    @include _nested-ul;
+  }
+
+  ul {
+    margin-bottom: get-spacing('whitespace', 'petite');
+  }
+
+  ul li {
+    font-size: 1.4rem;
+    list-style-type: square;
+    margin-bottom: 0.4rem;
+    margin-left: 1.6rem;
+
+    &::marker {
+      @include set-color-schemes((
+        'light': (
+          'color': get-color('accent', 'mid')
+        ),
+        'dark': (
+          'color': get-color('accent', 'mid')
+        )
+      ));
+    }
+
+    p {
+      font-size: inherit;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    @include _nested-ol;
+    @include _nested-ul;
+  }
+
+  dl {
+    margin-bottom: get-spacing('whitespace', 'petite');
+
+    dt {
+      @include fonts.assign-font('heading', 'bold');
+      font-size: 1.4rem;
+      line-height: 1.6;
+      height: auto;
+      margin-bottom: 0.4rem;
+    }
+
+    dd {
+      margin-bottom: 1.4rem;
+      padding-left: 1.5rem;
+      position: relative;
+
+      &::before {
+        content: ' ';
+        height: 0.45rem;
+        left: 0;
+        position: absolute;
+        top: 0.8rem;
+        width: 0.45rem;
+
+        @include set-color-schemes((
+          'light': (
+            'background-color': get-color('accent', 'mid')
+          ),
+          'dark': (
+            'background-color': get-color('accent', 'mid')
+          )
+        ));
+      }
+
+      &:last-of-type {
+        padding-bottom: 1.4rem;
+        margin-bottom: 0;
+      }
+
+      p {
+        line-height: 1.4;
+      }
+
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    > div {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      position: relative;
+
+      &::after {
+        border-bottom-width: 0.1rem;
+        border-bottom-style: dashed;
+        bottom: 0;
+        right: 0;
+        content: ' ';
+        height: 0;
+        position: absolute;
+        width: 100%;
+
+        @include set-color-schemes((
+          'light': (
+            'border-bottom-color': get-color('accent', 'mid')
+          ),
+          'dark': (
+            'border-bottom-color': get-color('accent', 'mid')
+          )
+        ));
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        &::after {
+          content: '';
+          display: none;
+          margin-bottom: 0;
+        }
+      }
+
+      > *:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

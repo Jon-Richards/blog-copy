@@ -1,0 +1,26 @@
+@use '../utils/colors';
+@use '../utils/constants';
+@use '../utils/classes';
+@use '../utils/spacing';
+
+@mixin aside {
+  aside {
+    border-left-width: constants.get-constant('border-width');
+    border-left-style: solid;
+    box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+    margin: 0 auto spacing.get-spacing('whitespace', 'petite') auto;
+    max-width: 40rem;
+    padding: 2rem;
+
+    @include colors.set-color-schemes((
+      'light': (
+        'background-color': colors.get-color('light', 'bright'),
+        'border-color': colors.get-color('accent', 'mid')
+      ),
+      'dark': (
+        'background-color': colors.get-color('shadow', 'bright'),
+        'border-color': colors.get-color('accent', 'mid')
+      )
+    ));
+  }
+}

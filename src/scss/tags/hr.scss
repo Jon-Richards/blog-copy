@@ -1,0 +1,29 @@
+@use '../utils/colors';
+@use '../utils/constants';
+@use '../utils/breakpoints';
+@use '../utils/spacing';
+
+@mixin hr {
+  hr {
+    border: none;
+    border-top-width: constants.get-constant('border-width');
+    border-top-style: solid;
+    color: rgba(0, 0, 0, 0);
+    height: 0;
+    margin: spacing.get-spacing('whitespace', 'base') auto;
+    width: 50%;
+
+    @include colors.set-color-schemes((
+      'light': (
+        'border-top-color': colors.get-color('accent', 'mid')
+      ),
+      'dark': (
+        'border-top-color': colors.get-color('accent', 'mid')
+      ),
+    ));
+
+    @media (breakpoints.get-breakpoint(768)) {
+      margin: spacing.get-spacing('whitespace', 'grande') auto;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use '../utils/fonts';
+@use '../utils/colors';
+@use '../utils/classes';
+
+@mixin em {
+  em {
+    display: inline-block;
+    @include fonts.assign-font('copy', 'normal');
+    font-style: italic;
+    padding: 0 0.4rem;
+
+    @include colors.set-color-schemes((
+      'light': (
+        'background-color': colors.get-color('accent', 'bright')
+      ),
+      'dark': (
+        'background-color': colors.get-color('accent', 'dark')
+      )
+    ));
+  }
+}

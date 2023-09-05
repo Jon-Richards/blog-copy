@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use '../config/defaults.scss' as *;
+
+$_namespace: map.get($default-configuration, 'namespace') !default;
+
+@mixin set-class-namespace($namespace) {
+  $_namespace: $namespace !global;
+}
+
+@function set-class($class-name, $class-modifier: null) {
+  $_modifier: '';
+  @if $class-modifier {
+    $_modifier: '--#{$class-modifier}';
+  }
+
+  $name: '#{$_namespace}__#{$class-name}#{$_modifier}';
+
+  @return #{$name};
+}
+
+@mixin render-property-map($map) {
+  @each $key, $value in $map {
+    #{$key}: #{$value};
+  }
+}

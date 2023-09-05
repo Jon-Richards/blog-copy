@@ -1,0 +1,86 @@
+@use '../utils/fonts';
+@use '../utils/colors';
+@use '../utils/constants';
+
+@mixin headings {
+  h1 {
+    @include fonts.assign-font('heading', 'bold');
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.6rem;
+  }
+
+  h2 {
+    @include fonts.assign-font('heading', 'bold');
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin: 0 auto 2.4rem auto;
+    position: relative;
+
+    &::after {
+      content: ' ';
+      display: block;
+      border-bottom-width: 0.4rem;
+      border-bottom-style: double;
+      margin: 0.6rem 0 0 0;
+      max-width: 5rem;
+
+      @include colors.set-color-schemes((
+        'light': (
+          'border-bottom-color': colors.get-color('accent', 'mid')
+        ),
+        'dark': (
+          'border-bottom-color': colors.get-color('accent', 'mid')
+        )
+      ));
+    }
+
+    a:link, a:visited, a:active, a:hover, a:focus {
+      font-style: inherit;
+
+      &::after {
+        display: none;
+      }
+    }
+    a:hover::before, a:focus::before {
+      content: '#';
+      cursor: pointer;
+      font-weight: 600;
+      left: -1.6rem;
+      margin-right: 0.4rem;
+      position: absolute;
+    }
+  }
+
+  h3 {
+    @include fonts.assign-font('heading', 'bold');
+    font-size: 1.6rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+
+    &::after {
+      content: ' ';
+      display: block;
+      border-bottom-width: constants.get-constant('border-width');
+      border-bottom-style: solid;
+      margin: 0.4rem 0 0 0;
+      max-width: 5rem;
+
+      @include colors.set-color-schemes((
+        'light': (
+          'border-bottom-color': colors.get-color('accent', 'mid')
+        ),
+        'dark': (
+          'border-bottom-color': colors.get-color('accent', 'mid')
+        )
+      ));
+    }
+  }
+
+  h4 {
+    @include fonts.assign-font('heading', 'bold');
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+}

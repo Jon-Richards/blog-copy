@@ -1,0 +1,78 @@
+@use 'sass:map';
+@use '../utils/colors';
+@use '../utils/fonts';
+@use '../utils/classes';
+@use '../utils/breakpoints' as *;
+@use '../utils/constants';
+@use '../utils/spacing';
+
+@mixin blockquote {
+  figure.#{classes.set-class('blockquote')} {
+    border-width: constants.get-constant('border-width') 0;
+    border-style: solid;
+    box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto spacing.get-spacing('whitespace', 'petite') auto;
+    max-width: 40rem;
+    padding: 1.4rem 2rem 1.6rem;
+
+    @include colors.set-color-schemes((
+      'light': (
+        'background-color': colors.get-color('light', 'bright'),
+        'border-color': colors.get-color('accent', 'mid')
+      ),
+      'dark': (
+        'background-color': colors.get-color('shadow', 'bright'),
+        'border-color': colors.get-color('accent', 'mid')
+      )
+    ));
+
+    blockquote {
+      margin-bottom: 2rem;
+      padding: 2.2rem 0 0 0;
+      position: relative;
+
+      @media (get-breakpoint(768)) {
+        padding: 2.2rem 0 0 2rem;
+      }
+
+      &::before {
+        color: colors.get-color('accent', 'mid');
+        content: '\201c'; // left double quote
+        display: inline-block;
+        font-size: 6rem;
+        left: -0.3rem;
+        position: absolute;
+        top: -1.2rem;
+
+        @include colors.set-color-schemes((
+          'light': (
+            'color': colors.get-color('accent', 'mid')
+          ),
+          'dark': (
+            'color': colors.get-color('accent', 'mid')
+          )
+        ));
+
+        @media (get-breakpoint(768)) {
+          left: -1rem;
+        }
+      }
+    }
+
+    figcaption {
+      display: block;
+      @include fonts.assign-font('copy', 'normal');
+      font-weight: 600;
+      margin-top: 1rem;
+      text-align: right;
+    }
+
+    cite {
+      display: block;
+      @include fonts.assign-font('copy', 'normal');
+      font-style: italic;
+      text-align: right;
+    }
+  }
+}

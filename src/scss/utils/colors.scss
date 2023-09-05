@@ -1,0 +1,189 @@
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:selector';
+@use 'sass:string';
+@use 'sass:list';
+@use './classes';
+@use './custom-properties';
+@use '../config/defaults' as *;
+
+$_palette: map.get($default-configuration, 'colors') !default;
+
+/**
+ * Configures the colors used by the style guide.  This is a deep merge with
+ * the default color palette, so incomplete palettes can be passed.  Additional
+ * color families can also be included but wont necessarily be used by the
+ * style guide.
+ */
+@mixin set-color-palette($new-palette) {
+  $_palette: map.deep-merge($_palette, $new-palette) !global;
+}
+
+/**
+ * Declares CSS custom properties for each color in the palette.
+ */
+@mixin declare-color-properties {
+  @each $family-name, $family in $_palette {
+    @each $variant-name, $variant in map.get($_palette, $family-name) {
+      @include custom-properties.declare-custom-property(
+        $type: 'color',
+        $name: #{$family-name},
+        $modifier: #{$variant-name},
+        $value: #{$variant}
+      );
+    }
+  }
+}
+
+/**
+ * Returns a reference to a color in the palette.  The reference will be a
+ * CSS custom property, but will use a color from the palette as a fallback if
+ * the property doesn't exist.
+ */
+@function get-color($family, $variant) {
+  @if (map-has-key($_palette, $family) == false) {
+    @error 'Unsupported color family: "#{$family}".';
+  }
+
+  @if (map-has-key($_palette, $family, $variant) == false) {
+    @error 'Unsupported color variant: "#{$variant}" in family: "#{$family}".';
+  }
+
+  $prop-name: custom-properties.make-custom-prop-name(
+    $type: 'color',
+    $name: #{$family},
+    $modifier: $variant
+  );
+
+  $default-value: #{map.get($_palette, $family, $variant)};
+
+  $variable-reference: 'var(#{$prop-name}, #{$default-value})';
+
+  @return #{$variable-reference};
+}
+
+/**
+ * Renders custom property values based on a mapping of color schemes.  For each
+ * color scheme, a media query (prefers-color-scheme) is rendered, along with
+ * overrides for using any of the other color schemes, regardless of the user's
+ * preferences.
+ *
+ * This means that if the user has their browser set to "dark" mode, the
+ * "dark" bindings will be used by default.  However, if the developer
+ * overrides the user's preference in the HTML, the override will render
+ * instead.
+ *
+ * @example
+ * .foo {
+ *   @include set-color-schemes((
+ *     'dark': (
+ *       'color': #fff, // Light text in dark mode.
+ *     ),
+ *     'light': (
+ *       'color': #000, // Dark text in light mode.
+ *     )
+ *   ));
+ * }
+ */
+@mixin set-color-schemes($color-schemes, $remove-root: true) {
+  $selector: &;
+  @each $scheme-name, $mapping in $color-schemes {
+    @at-root {
+      @media (prefers-color-scheme: #{$scheme-name}) {
+        #{$selector} {
+          @include classes.render-property-map(
+            map-get($color-schemes, $scheme-name)
+          );
+        }
+
+        @include _render-light-and-dark-inversions(
+            $selector, $color-schemes, $scheme-name);
+
+        // overrides
+        @each $override-name, $_mapping in $color-schemes {
+          @include _render-color-scheme-overrides(
+              $selector, $override-name, $color-schemes, $remove-root);
+        }
+      }
+    }
+  }
+}
+
+@mixin _render-light-and-dark-inversions(
+  $selector,
+  $color-schemes,
+  $scheme-name
+) {
+  @if ($scheme-name == 'light' or $scheme-name == 'dark') {
+    $inverted-color-scheme-name: 'dark';
+
+    @if ($scheme-name == 'dark') {
+      $inverted-color-scheme-name: 'light';
+    }
+
+    @include _render-inversion-overrides(
+      $selector,
+      $color-schemes,
+      $scheme-name,
+      $inverted-color-scheme-name
+    );
+  }
+}
+
+@mixin _render-inversion-overrides(
+  $selector,
+  $color-schemes,
+  $color-scheme-name,
+  $inverted-color-scheme-name
+) {
+  $inverted-modifier: #{classes.set-class('color-scheme', 'inverted')};
+
+  #{$selector}.#{$inverted-modifier},
+  .#{$inverted-modifier} #{$selector}{
+    @include classes.render-property-map(
+      map-get($color-schemes, $inverted-color-scheme-name)
+    );
+  }
+}
+
+@mixin _render-color-scheme-overrides(
+  $element-selector,
+  $override-name,
+  $color-schemes,
+  $remove-root
+) {
+  $override-selector: classes.set-class('color-scheme', $override-name);
+  $selector: $element-selector;
+
+  @if $remove-root {
+    $selector-list: string.split(#{&}, ' ');
+    $selector: _remove-root-from-selector($selector-list, 1);
+  }
+
+  .#{$override-selector} #{$selector},
+  #{$selector}.#{$override-selector} {
+    @include classes.render-property-map(
+      map-get($color-schemes, $override-name)
+    );
+  }
+}
+
+@function _remove-root-from-selector($selector-list, $index) {
+  $result: null;
+  @for $i from 1 through length($selector-list) {
+    @if $i != $index {
+      $result: append($result, nth($selector-list, $i));
+    }
+  }
+  @return $result;
+}
+
+@mixin _set-inverted-color-scheme($current, $color-schemes) {
+  @if ($name == 'dark') {
+    @include classes.render-property-map(map-get($color-schemes, 'light'));
+  }
+
+  @if ($name == 'light') {
+    @include classes.render-property-map(map-get($color-schemes, 'dark'));
+  }
+}

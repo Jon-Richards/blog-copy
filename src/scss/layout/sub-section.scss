@@ -1,0 +1,21 @@
+@use '../utils/classes';
+@use '../utils/spacing';
+
+@mixin sub-section {
+  .#{classes.set-class('sub-section')} {
+    display: block;
+    padding: 0 0 spacing.get-spacing('whitespace', 'base') 0;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    > *:last-child:not(hr) {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use '../utils/fonts';
+
+@mixin i {
+  i {
+    @include fonts.assign-font('copy', 'normal');
+    font-style: italic;
+  }
+}

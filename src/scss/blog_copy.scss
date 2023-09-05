@@ -1,0 +1,9 @@
+@use './blog-copy';
+
+$config: (
+  'namespace': 'jr'
+);
+
+// @include blog-copy.configure($config);
+
+@include blog-copy.render();

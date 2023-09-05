@@ -1,0 +1,8 @@
+@use '../utils/classes';
+@use '../utils/colors';
+
+@mixin radio-button {
+  .#{classes.set-class('radio-button')} {
+    display: inline-block;
+  }
+}

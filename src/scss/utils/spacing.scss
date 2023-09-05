@@ -1,0 +1,36 @@
+@use 'sass:map';
+@use './custom-properties';
+@use '../config/defaults' as *;
+
+$_spacing: map.get($default-configuration, 'spacing');
+
+@mixin set-spacing($new-spacing) {
+  $_spacing: map.deep-merge($_spacing, $new-spacing) !global;
+}
+
+@mixin declare-spacing-properties {
+  @each $category-name, $category in $_spacing {
+    @each $variant-name, $variant in map.get($_spacing, $category-name) {
+      @include custom-properties.declare-custom-property(
+        $type: 'spacing',
+        $name: #{$category-name},
+        $modifier: #{$variant-name},
+        $value: #{$variant}
+      );
+    }
+  }
+}
+
+@function get-spacing($category, $variant) {
+  $spacing: custom-properties.make-custom-prop-name(
+    $type: 'spacing',
+    $name: $category,
+    $modifier: $variant
+  );
+
+  $default-value: map-get($_spacing, $category, $variant);
+
+  $variable-reference: var(#{$spacing}, $default-value);
+
+  @return $variable-reference;
+}

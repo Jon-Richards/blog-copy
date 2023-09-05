@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use '../config/defaults' as *;
+
+$_namespace: map.get($default-configuration, 'namespace');
+
+@mixin set-namespace($namespace) {
+  @if $namespace {
+    $_namespace: $namespace !global;
+  }
+}
+
+/**
+ * Declares a CSS custom property with standardized naming conventions for
+ * the style guide project.
+ */
+@mixin declare-custom-property(
+  $type,
+  $name,
+  $value,
+  $property: '',
+  $modifier: '',
+) {
+  $_prop-name: make-custom-prop-name(
+    $type,
+    $name,
+    $property,
+    $modifier
+  );
+
+  #{$_prop-name}: #{$value};
+}
+
+/**
+ * Generates a name for a CSS custom property utilizing project wide
+ * conventions.
+ */
+@function make-custom-prop-name(
+  $type,
+  $name,
+  $property: '',
+  $modifier: '',
+) {
+  @if ($property != '') { $property: '__#{$property}' };
+  @if ($modifier != '') { $modifier: '--#{$modifier}' };
+
+  @return '--#{$_namespace}__#{$type}__#{$name}#{$property}#{$modifier}';
+}

@@ -1,0 +1,72 @@
+@use '../utils/classes' as *;
+@use '../utils/colors' as *;
+@use '../utils/breakpoints' as *;
+@use '../utils/constants' as *;
+@use '../utils/spacing' as *;
+
+@mixin _full-bleed {
+  padding: 0;
+  &:first-of-type,
+  &:last-of-type {
+    padding: 0;
+  }
+}
+
+@mixin content {
+  $_name: #{set-class('content')};
+
+  .#{$_name} {
+    color-scheme: normal;
+    margin: 0 auto;
+    padding:
+      get-spacing('whitespace', 'grande')
+      get-spacing('whitespace', 'petite');
+    max-width: 64rem;
+    width: 100%;
+
+    @include set-color-schemes((
+      'light': (
+        'background-color': get-color('light', 'bright'),
+        'color': get-color('shadow', 'dark'),
+        'color-scheme': light
+      ),
+      'dark': (
+        'background-color': get-color('shadow', 'dark'),
+        'color': get-color('light', 'bright'),
+        'color-scheme': dark
+      )
+    ));
+
+    @media (get-breakpoint(768)) {
+      padding:
+        get-spacing('whitespace', 'base')
+        get-spacing('whitespace', 'base');
+    }
+
+    &--banner {
+      padding:
+        get-spacing('whitespace', 'base')
+        get-spacing('whitespace', 'petite');
+
+      @media (get-breakpoint(768)) {
+        padding: get-spacing('whitespace', 'base');
+      }
+    }
+
+    &--full-bleed {
+      @include _full-bleed;
+
+      @media (get-breakpoint(768)) {
+        @include _full-bleed;
+      }
+    }
+
+    &--no-background {
+      background: none !important;
+    }
+
+    > *:last-child:not(hr) {
+      margin-bottom: 0;
+    }
+  }
+}

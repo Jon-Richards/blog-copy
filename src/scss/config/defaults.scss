@@ -1,0 +1,51 @@
+@use 'sass:map';
+
+$default-configuration: (
+  'namespace': 'bc23',
+  'spacing': (
+    'whitespace': (
+      'petite': 2rem,
+      'base': 3rem,
+      'grande': 6rem
+    )
+  ),
+  'colors': (
+    'light': (
+      'dark': hsl(30deg, 8%, 70%),
+      'mid': hsl(30deg, 8%, 85%),
+      'bright': hsl(30deg, 8%, 95%)
+    ),
+    'shadow': (
+      'dark': hsl(20deg, 8%, 0%),
+      'mid': hsl(20deg, 8%, 7%),
+      'bright': hsl(200deg, 8%, 14%)
+    ),
+    'accent': (
+      'dark': hsl(160deg, 90%, 25%),
+      'mid': hsl(160deg, 49%, 49%),
+      'bright': hsl(160deg, 49%, 80%)
+    )
+  ),
+  'fonts': (
+    'heading': (
+      'family': '"Helvetica Neue", Helvetica, Arial, sans-serif',
+      'weights': (
+        'bold': 700
+      )
+    ),
+    'copy': (
+      'family': 'Georgia, serif',
+      'weights': (
+        'normal': 400,
+        'semibold': 500,
+        'bold': 700,
+      )
+    ),
+    'code': (
+      'family': 'monospace',
+      'weights': (
+        'normal': 400,
+      )
+    )
+  )
+) !default;

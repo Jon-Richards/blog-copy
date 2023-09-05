@@ -1,0 +1,81 @@
+@use 'sass:map';
+@use './custom-properties';
+@use '../config/defaults' as *;
+
+$_fonts: map.get($default-configuration, 'fonts') !default;
+
+/**
+ * Configures the fonts used by the style guide.  This is a deep map merge,
+ * meaning an incomplete font set can be passed.  New fonts may be included,
+ * though they may not be used by the style guide.
+ */
+@mixin set-fonts($fonts) {
+  @if $fonts {
+    $_fonts: map.deep-merge($_fonts, $fonts) !global;
+  }
+}
+
+/**
+ * Creates a custom property for each weight of a given font family.
+ */
+@mixin create-font-weight-properties($family) {
+  @each $weight-name, $weight in map.get($_fonts, $family, 'weights') {
+    $weight-value: map.get($_fonts, $family, 'weights', $weight-name);
+    @include custom-properties.declare-custom-property(
+      $type: 'font',
+      $name: #{$family},
+      $property: 'font-weight',
+      $modifier: #{$weight-name},
+      $value: #{$weight-value}
+    );
+  }
+}
+
+/**
+ * Parses the $_fonts map and generates custom properties based each
+ * font family.
+ */
+@mixin declare-font-properties {
+  @each $family-name, $family in $_fonts {
+    $_family-value: map.get($_fonts, $family-name, 'family');
+    @include custom-properties.declare-custom-property(
+      $type: 'font',
+      $name: $family-name,
+      $property: 'font-family',
+      $value: $_family-value
+    );
+    @include create-font-weight-properties($family-name);
+  }
+}
+
+/**
+ * Assigns a font of a given family and weight.  Throws if an invalid family
+ * or weight is passed.
+ */
+@mixin assign-font($family-name, $weight) {
+  @if map-has-key($_fonts, $family-name) {
+    $_family: map.get($_fonts, $family-name, 'family');
+    $_prop-name: custom-properties.make-custom-prop-name(
+      $type: 'font',
+      $name: $family-name,
+      $property: 'font-family'
+    );
+    font-family: var(#{$_prop-name}, #{$_family});
+  } @else {
+    @error 'Invalid font family: "#{$family-name}".';
+  }
+
+  @if map-has-key($_fonts, $family-name, 'weights', $weight) {
+    $_weight: map.get($_fonts, $family-name, 'weights', $weight);
+
+    $_prop-name: custom-properties.make-custom-prop-name(
+      $type: 'font',
+      $name: $family-name,
+      $property: 'font-weight',
+      $modifier: $weight
+    );
+    font-weight: var(#{$_prop-name}, #{$_weight});
+  } @else {
+    @error 'Unsupported weight for family: "#{$family-name}".';
+  }
+}

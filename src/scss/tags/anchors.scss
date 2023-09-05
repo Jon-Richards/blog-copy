@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use '../utils/colors';
+@use '../utils/constants';
+
+@mixin anchors {
+  a:link, a:visited, a:active, {
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    font-style: italic;
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      bottom: 0.2rem;
+      border-bottom-color: colors.get-color('accent', 'mid');
+      border-bottom-width: constants.get-constant('border-width');
+      border-bottom-style: solid;
+      content: ' ';
+      height: 0rem;
+      left: 0;
+      position: absolute;
+      width: 100%;
+
+      @include colors.set-color-schemes((
+        'light': (
+          'border-bottom-color': colors.get-color('accent', 'mid')
+        ),
+        'dark': (
+          'border-bottom-color': colors.get-color('accent', 'mid')
+        )
+      ));
+    }
+  }
+
+  a:link:hover, a:link:focus {
+    &::after {
+      border-bottom-style: dotted;
+    }
+  }
+}

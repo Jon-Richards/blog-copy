@@ -1,0 +1,1364 @@
+@charset "UTF-8";
+/**
+ * Declares a CSS custom property with standardized naming conventions for
+ * the style guide project.
+ */
+/**
+ * Generates a name for a CSS custom property utilizing project wide
+ * conventions.
+ */
+/**
+ * Configures the colors used by the style guide.  This is a deep merge with
+ * the default color palette, so incomplete palettes can be passed.  Additional
+ * color families can also be included but wont necessarily be used by the
+ * style guide.
+ */
+/**
+ * Declares CSS custom properties for each color in the palette.
+ */
+/**
+ * Returns a reference to a color in the palette.  The reference will be a
+ * CSS custom property, but will use a color from the palette as a fallback if
+ * the property doesn't exist.
+ */
+/**
+ * Renders custom property values based on a mapping of color schemes.  For each
+ * color scheme, a media query (prefers-color-scheme) is rendered, along with
+ * overrides for using any of the other color schemes, regardless of the user's
+ * preferences.
+ *
+ * This means that if the user has their browser set to "dark" mode, the
+ * "dark" bindings will be used by default.  However, if the developer
+ * overrides the user's preference in the HTML, the override will render
+ * instead.
+ *
+ * @example
+ * .foo {
+ *   @include set-color-schemes((
+ *     'dark': (
+ *       'color': #fff, // Light text in dark mode.
+ *     ),
+ *     'light': (
+ *       'color': #000, // Dark text in light mode.
+ *     )
+ *   ));
+ * }
+ */
+/**
+ * Commonly used values.  Some of these may be configurable, but some are
+ * are static.
+ */
+/**
+ * Returns the value of a given constant from the constats map.
+ */
+/**
+ * Configures the fonts used by the style guide.  This is a deep map merge,
+ * meaning an incomplete font set can be passed.  New fonts may be included,
+ * though they may not be used by the style guide.
+ */
+/**
+ * Creates a custom property for each weight of a given font family.
+ */
+/**
+ * Parses the $_fonts map and generates custom properties based each
+ * font family.
+ */
+/**
+ * Assigns a font of a given family and weight.  Throws if an invalid family
+ * or weight is passed.
+ */
+/**
+ * Applies a configuration map to the style guide.  This mixin should be
+ * included before including the render() mixin.
+ */
+.bc23__root {
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+     v2.0 | 20110126
+     License: none (public domain)
+  */
+  /* HTML5 display-role reset for older browsers */
+  --bc23__color__light--dark: hsl(30deg, 8%, 70%);
+  --bc23__color__light--mid: hsl(30deg, 8%, 85%);
+  --bc23__color__light--bright: hsl(30deg, 8%, 95%);
+  --bc23__color__shadow--dark: hsl(20deg, 8%, 0%);
+  --bc23__color__shadow--mid: hsl(20deg, 8%, 7%);
+  --bc23__color__shadow--bright: hsl(200deg, 8%, 14%);
+  --bc23__color__accent--dark: hsl(160deg, 90%, 25%);
+  --bc23__color__accent--mid: hsl(160deg, 49%, 49%);
+  --bc23__color__accent--bright: hsl(160deg, 49%, 80%);
+  --bc23__font__heading__font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bc23__font__heading__font-weight--bold: 700;
+  --bc23__font__copy__font-family: Georgia, serif;
+  --bc23__font__copy__font-weight--normal: 400;
+  --bc23__font__copy__font-weight--semibold: 500;
+  --bc23__font__copy__font-weight--bold: 700;
+  --bc23__font__code__font-family: monospace;
+  --bc23__font__code__font-weight--normal: 400;
+  --bc23__spacing__whitespace--petite: 2rem;
+  --bc23__spacing__whitespace--base: 3rem;
+  --bc23__spacing__whitespace--grande: 6rem;
+  font-family: var(--bc23__font__copy__font-family, Georgia, serif);
+  font-weight: var(--bc23__font__copy__font-weight--normal, 400);
+  font-size: 100%;
+  min-height: 100vh;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}
+.bc23__root html, .bc23__root body, .bc23__root div, .bc23__root span, .bc23__root applet, .bc23__root object, .bc23__root iframe,
+.bc23__root h1, .bc23__root h2, .bc23__root h3, .bc23__root h4, .bc23__root h5, .bc23__root h6, .bc23__root p, .bc23__root blockquote, .bc23__root pre,
+.bc23__root a, .bc23__root abbr, .bc23__root acronym, .bc23__root address, .bc23__root big, .bc23__root cite, .bc23__root code,
+.bc23__root del, .bc23__root dfn, .bc23__root em, .bc23__root img, .bc23__root ins, .bc23__root kbd, .bc23__root q, .bc23__root s, .bc23__root samp,
+.bc23__root small, .bc23__root strike, .bc23__root strong, .bc23__root sub, .bc23__root sup, .bc23__root tt, .bc23__root var,
+.bc23__root b, .bc23__root u, .bc23__root i, .bc23__root center,
+.bc23__root dl, .bc23__root dt, .bc23__root dd, .bc23__root ol, .bc23__root ul, .bc23__root li,
+.bc23__root fieldset, .bc23__root form, .bc23__root label, .bc23__root legend,
+.bc23__root table, .bc23__root caption, .bc23__root tbody, .bc23__root tfoot, .bc23__root thead, .bc23__root tr, .bc23__root th, .bc23__root td,
+.bc23__root article, .bc23__root aside, .bc23__root canvas, .bc23__root details, .bc23__root embed,
+.bc23__root figure, .bc23__root figcaption, .bc23__root footer, .bc23__root header, .bc23__root hgroup,
+.bc23__root menu, .bc23__root nav, .bc23__root output, .bc23__root ruby, .bc23__root section, .bc23__root summary,
+.bc23__root time, .bc23__root mark, .bc23__root audio, .bc23__root video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+.bc23__root article, .bc23__root aside, .bc23__root details, .bc23__root figcaption, .bc23__root figure,
+.bc23__root footer, .bc23__root header, .bc23__root hgroup, .bc23__root menu, .bc23__root nav, .bc23__root section {
+  display: block;
+}
+.bc23__root body {
+  line-height: 1;
+}
+.bc23__root ol, .bc23__root ul {
+  list-style: none;
+}
+.bc23__root blockquote, .bc23__root q {
+  quotes: none;
+}
+.bc23__root blockquote:before, .bc23__root blockquote:after,
+.bc23__root q:before, .bc23__root q:after {
+  content: "";
+  content: none;
+}
+.bc23__root table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.bc23__root, .bc23__root *, .bc23__root *::before, .bc23__root *::after {
+  box-sizing: border-box;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root {
+    background-color: var(--bc23__color__light--mid, hsl(30deg, 8%, 85%));
+  }
+  .bc23__root.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root {
+    background-color: var(--bc23__color__shadow--mid, hsl(20deg, 8%, 7%));
+  }
+  .bc23__color-scheme--light .bc23__root,
+  .bc23__root.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--mid, hsl(30deg, 8%, 85%));
+  }
+  .bc23__color-scheme--dark .bc23__root,
+  .bc23__root.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--mid, hsl(20deg, 8%, 7%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root {
+    background-color: var(--bc23__color__shadow--mid, hsl(20deg, 8%, 7%));
+  }
+  .bc23__root.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root {
+    background-color: var(--bc23__color__light--mid, hsl(30deg, 8%, 85%));
+  }
+  .bc23__color-scheme--light .bc23__root,
+  .bc23__root.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--mid, hsl(30deg, 8%, 85%));
+  }
+  .bc23__color-scheme--dark .bc23__root,
+  .bc23__root.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--mid, hsl(20deg, 8%, 7%));
+  }
+}
+.bc23__root ::selection {
+  background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+}
+.bc23__root .meta::after {
+  border-bottom: 0.4rem double var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  content: " ";
+  display: block;
+  margin: var(--bc23__spacing__whitespace--petite, 2rem) 0;
+  max-width: 5rem;
+}
+.bc23__root .meta-info {
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
+.bc23__root a:link, .bc23__root a:visited, .bc23__root a:active {
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-style: italic;
+  position: relative;
+  text-decoration: none;
+}
+.bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after {
+  bottom: 0.2rem;
+  border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  border-bottom-width: 0.14rem;
+  border-bottom-style: solid;
+  content: " ";
+  height: 0rem;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after,
+  a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after,
+  a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after,
+  a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after,
+  a:link::after, .bc23__root a:visited::after, .bc23__root a:active::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root a:link:hover::after, .bc23__root a:link:focus::after {
+  border-bottom-style: dotted;
+}
+.bc23__root aside {
+  border-left-width: 0.14rem;
+  border-left-style: solid;
+  box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+  margin: 0 auto var(--bc23__spacing__whitespace--petite, 2rem) auto;
+  max-width: 40rem;
+  padding: 2rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root aside {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root aside.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root aside {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light aside,
+  aside.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark aside,
+  aside.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root aside {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root aside.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root aside {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light aside,
+  aside.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark aside,
+  aside.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root figure.bc23__blockquote {
+  border-width: 0.14rem 0;
+  border-style: solid;
+  box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto var(--bc23__spacing__whitespace--petite, 2rem) auto;
+  max-width: 40rem;
+  padding: 1.4rem 2rem 1.6rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root figure.bc23__blockquote {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root figure.bc23__blockquote.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root figure.bc23__blockquote {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light figure.bc23__blockquote,
+  figure.bc23__blockquote.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark figure.bc23__blockquote,
+  figure.bc23__blockquote.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root figure.bc23__blockquote {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root figure.bc23__blockquote.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root figure.bc23__blockquote {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light figure.bc23__blockquote,
+  figure.bc23__blockquote.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark figure.bc23__blockquote,
+  figure.bc23__blockquote.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root figure.bc23__blockquote blockquote {
+  margin-bottom: 2rem;
+  padding: 2.2rem 0 0 0;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .bc23__root figure.bc23__blockquote blockquote {
+    padding: 2.2rem 0 0 2rem;
+  }
+}
+.bc23__root figure.bc23__blockquote blockquote::before {
+  color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  content: "“";
+  display: inline-block;
+  font-size: 6rem;
+  left: -0.3rem;
+  position: absolute;
+  top: -1.2rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root figure.bc23__blockquote blockquote::before {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root figure.bc23__blockquote blockquote::before.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root figure.bc23__blockquote blockquote::before {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light figure.bc23__blockquote blockquote::before,
+  figure.bc23__blockquote blockquote::before.bc23__color-scheme--light {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark figure.bc23__blockquote blockquote::before,
+  figure.bc23__blockquote blockquote::before.bc23__color-scheme--dark {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root figure.bc23__blockquote blockquote::before {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root figure.bc23__blockquote blockquote::before.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root figure.bc23__blockquote blockquote::before {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light figure.bc23__blockquote blockquote::before,
+  figure.bc23__blockquote blockquote::before.bc23__color-scheme--light {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark figure.bc23__blockquote blockquote::before,
+  figure.bc23__blockquote blockquote::before.bc23__color-scheme--dark {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (min-width: 768px) {
+  .bc23__root figure.bc23__blockquote blockquote::before {
+    left: -1rem;
+  }
+}
+.bc23__root figure.bc23__blockquote figcaption {
+  display: block;
+  font-family: var(--bc23__font__copy__font-family, Georgia, serif);
+  font-weight: var(--bc23__font__copy__font-weight--normal, 400);
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: right;
+}
+.bc23__root figure.bc23__blockquote cite {
+  display: block;
+  font-family: var(--bc23__font__copy__font-family, Georgia, serif);
+  font-weight: var(--bc23__font__copy__font-weight--normal, 400);
+  font-style: italic;
+  text-align: right;
+}
+.bc23__root code {
+  border-width: thin;
+  border-style: dashed;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 0 0.2rem;
+  padding: 0.1rem 0.6rem 0 0.6rem;
+  font-family: var(--bc23__font__code__font-family, monospace);
+  font-weight: var(--bc23__font__code__font-weight--normal, 400);
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root code {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root code.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root code {
+    border-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+    color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+  .bc23__color-scheme--light code,
+  code.bc23__color-scheme--light {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark code,
+  code.bc23__color-scheme--dark {
+    border-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+    color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root code {
+    border-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+    color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+  .bc23__root code.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root code {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light code,
+  code.bc23__color-scheme--light {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark code,
+  code.bc23__color-scheme--dark {
+    border-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+    color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+}
+.bc23__root code.bc23__code--no-margin {
+  margin: 0;
+}
+.bc23__root code.bc23__code-block {
+  border: none;
+  border-left-width: 0.14rem;
+  border-left-style: solid;
+  box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 0 var(--bc23__spacing__whitespace--petite, 2rem) 0;
+  overflow: scroll;
+  padding: 1rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root code.bc23__code-block {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root code.bc23__code-block.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root code.bc23__code-block {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__color-scheme--light code.bc23__code-block,
+  code.bc23__code-block.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark code.bc23__code-block,
+  code.bc23__code-block.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root code.bc23__code-block {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__root code.bc23__code-block.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root code.bc23__code-block {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light code.bc23__code-block,
+  code.bc23__code-block.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark code.bc23__code-block,
+  code.bc23__code-block.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--bright, hsl(200deg, 8%, 14%));
+    border-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+}
+.bc23__root code pre {
+  display: block;
+  height: auto;
+  width: auto;
+}
+.bc23__root em {
+  display: inline-block;
+  font-family: var(--bc23__font__copy__font-family, Georgia, serif);
+  font-weight: var(--bc23__font__copy__font-weight--normal, 400);
+  font-style: italic;
+  padding: 0 0.4rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root em {
+    background-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+  .bc23__root em.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root em {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light em,
+  em.bc23__color-scheme--light {
+    background-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+  .bc23__color-scheme--dark em,
+  em.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root em {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root em.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root em {
+    background-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+  .bc23__color-scheme--light em,
+  em.bc23__color-scheme--light {
+    background-color: var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%));
+  }
+  .bc23__color-scheme--dark em,
+  em.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+.bc23__root h1 {
+  font-family: var(--bc23__font__heading__font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  font-weight: var(--bc23__font__heading__font-weight--bold, 700);
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1.6rem;
+}
+.bc23__root h2 {
+  font-family: var(--bc23__font__heading__font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  font-weight: var(--bc23__font__heading__font-weight--bold, 700);
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin: 0 auto 2.4rem auto;
+  position: relative;
+}
+.bc23__root h2::after {
+  content: " ";
+  display: block;
+  border-bottom-width: 0.4rem;
+  border-bottom-style: double;
+  margin: 0.6rem 0 0 0;
+  max-width: 5rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root h2::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root h2::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root h2::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light h2::after,
+  h2::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark h2::after,
+  h2::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root h2::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root h2::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root h2::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light h2::after,
+  h2::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark h2::after,
+  h2::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root h2 a:link, .bc23__root h2 a:visited, .bc23__root h2 a:active, .bc23__root h2 a:hover, .bc23__root h2 a:focus {
+  font-style: inherit;
+}
+.bc23__root h2 a:link::after, .bc23__root h2 a:visited::after, .bc23__root h2 a:active::after, .bc23__root h2 a:hover::after, .bc23__root h2 a:focus::after {
+  display: none;
+}
+.bc23__root h2 a:hover::before, .bc23__root h2 a:focus::before {
+  content: "#";
+  cursor: pointer;
+  font-weight: 600;
+  left: -1.6rem;
+  margin-right: 0.4rem;
+  position: absolute;
+}
+.bc23__root h3 {
+  font-family: var(--bc23__font__heading__font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  font-weight: var(--bc23__font__heading__font-weight--bold, 700);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+.bc23__root h3::after {
+  content: " ";
+  display: block;
+  border-bottom-width: 0.14rem;
+  border-bottom-style: solid;
+  margin: 0.4rem 0 0 0;
+  max-width: 5rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root h3::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root h3::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root h3::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light h3::after,
+  h3::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark h3::after,
+  h3::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root h3::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root h3::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root h3::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light h3::after,
+  h3::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark h3::after,
+  h3::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root h4 {
+  font-family: var(--bc23__font__heading__font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  font-weight: var(--bc23__font__heading__font-weight--bold, 700);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+.bc23__root hr {
+  border: none;
+  border-top-width: 0.14rem;
+  border-top-style: solid;
+  color: rgba(0, 0, 0, 0);
+  height: 0;
+  margin: var(--bc23__spacing__whitespace--base, 3rem) auto;
+  width: 50%;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root hr {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root hr.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root hr {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light hr,
+  hr.bc23__color-scheme--light {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark hr,
+  hr.bc23__color-scheme--dark {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root hr {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root hr.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root hr {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light hr,
+  hr.bc23__color-scheme--light {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark hr,
+  hr.bc23__color-scheme--dark {
+    border-top-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (min-width: 768px) {
+  .bc23__root hr {
+    margin: var(--bc23__spacing__whitespace--grande, 6rem) auto;
+  }
+}
+.bc23__root i {
+  font-family: var(--bc23__font__copy__font-family, Georgia, serif);
+  font-weight: var(--bc23__font__copy__font-weight--normal, 400);
+  font-style: italic;
+}
+.bc23__root ol {
+  margin-bottom: var(--bc23__spacing__whitespace--petite, 2rem);
+}
+.bc23__root ol li {
+  font-size: 1.4rem;
+  list-style-type: decimal;
+  margin-bottom: 0.4rem;
+  margin-left: 1.4rem;
+  padding-left: 0.4rem;
+}
+.bc23__root ol li::marker {
+  font-size: 1rem;
+  font-weight: 700;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root ol li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root ol li::marker.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root ol li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light ol li::marker,
+  ol li::marker.bc23__color-scheme--light {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark ol li::marker,
+  ol li::marker.bc23__color-scheme--dark {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root ol li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root ol li::marker.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root ol li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light ol li::marker,
+  ol li::marker.bc23__color-scheme--light {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark ol li::marker,
+  ol li::marker.bc23__color-scheme--dark {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root ol li p {
+  font-size: inherit;
+}
+.bc23__root ol li p:last-of-type {
+  margin-bottom: 0;
+}
+.bc23__root ol li ol {
+  margin-bottom: 0;
+}
+.bc23__root ol li ol li {
+  list-style-type: lower-roman;
+}
+.bc23__root ol li ul {
+  margin-bottom: 0;
+}
+.bc23__root ol li ul li {
+  list-style-type: square;
+}
+.bc23__root ol li ul li::marker {
+  font-size: 1.4rem;
+}
+.bc23__root ul {
+  margin-bottom: var(--bc23__spacing__whitespace--petite, 2rem);
+}
+.bc23__root ul li {
+  font-size: 1.4rem;
+  list-style-type: square;
+  margin-bottom: 0.4rem;
+  margin-left: 1.6rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root ul li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root ul li::marker.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root ul li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light ul li::marker,
+  ul li::marker.bc23__color-scheme--light {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark ul li::marker,
+  ul li::marker.bc23__color-scheme--dark {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root ul li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root ul li::marker.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root ul li::marker {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light ul li::marker,
+  ul li::marker.bc23__color-scheme--light {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark ul li::marker,
+  ul li::marker.bc23__color-scheme--dark {
+    color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root ul li p {
+  font-size: inherit;
+}
+.bc23__root ul li p:last-of-type {
+  margin-bottom: 0;
+}
+.bc23__root ul li ol {
+  margin-bottom: 0;
+}
+.bc23__root ul li ol li {
+  list-style-type: lower-roman;
+}
+.bc23__root ul li ul {
+  margin-bottom: 0;
+}
+.bc23__root ul li ul li {
+  list-style-type: square;
+}
+.bc23__root ul li ul li::marker {
+  font-size: 1.4rem;
+}
+.bc23__root dl {
+  margin-bottom: var(--bc23__spacing__whitespace--petite, 2rem);
+}
+.bc23__root dl dt {
+  font-family: var(--bc23__font__heading__font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  font-weight: var(--bc23__font__heading__font-weight--bold, 700);
+  font-size: 1.4rem;
+  line-height: 1.6;
+  height: auto;
+  margin-bottom: 0.4rem;
+}
+.bc23__root dl dd {
+  margin-bottom: 1.4rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.bc23__root dl dd::before {
+  content: " ";
+  height: 0.45rem;
+  left: 0;
+  position: absolute;
+  top: 0.8rem;
+  width: 0.45rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root dl dd::before {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root dl dd::before.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root dl dd::before {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light dl dd::before,
+  dl dd::before.bc23__color-scheme--light {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark dl dd::before,
+  dl dd::before.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root dl dd::before {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root dl dd::before.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root dl dd::before {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light dl dd::before,
+  dl dd::before.bc23__color-scheme--light {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark dl dd::before,
+  dl dd::before.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root dl dd:last-of-type {
+  padding-bottom: 1.4rem;
+  margin-bottom: 0;
+}
+.bc23__root dl dd p {
+  line-height: 1.4;
+}
+.bc23__root dl dd > *:last-child {
+  margin-bottom: 0;
+}
+.bc23__root dl > div {
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  position: relative;
+}
+.bc23__root dl > div::after {
+  border-bottom-width: 0.1rem;
+  border-bottom-style: dashed;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 100%;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root dl > div::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root dl > div::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root dl > div::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light dl > div::after,
+  dl > div::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark dl > div::after,
+  dl > div::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root dl > div::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__root dl > div::after.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root dl > div::after {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--light dl > div::after,
+  dl > div::after.bc23__color-scheme--light {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+  .bc23__color-scheme--dark dl > div::after,
+  dl > div::after.bc23__color-scheme--dark {
+    border-bottom-color: var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+  }
+}
+.bc23__root dl > div:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.bc23__root dl > div:last-of-type::after {
+  content: "";
+  display: none;
+  margin-bottom: 0;
+}
+.bc23__root dl > div > *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.bc23__root p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+.bc23__root p:last-of-type {
+  margin-bottom: 0;
+}
+.bc23__root strong {
+  font-weight: 700;
+}
+.bc23__root .bc23__block {
+  width: 100%;
+}
+.bc23__root .bc23__block:first-of-type > .layout-content:first-of-type {
+  padding-top: var(--bc23__spacing__whitespace--base, 3rem);
+}
+.bc23__root .bc23__block:last-of-type > .layout-content:last-of-type {
+  padding-bottom: var(--bc23__spacing__whitespace--base, 3rem);
+}
+.bc23__root .bc23__content {
+  color-scheme: normal;
+  margin: 0 auto;
+  padding: var(--bc23__spacing__whitespace--grande, 6rem) var(--bc23__spacing__whitespace--petite, 2rem);
+  max-width: 64rem;
+  width: 100%;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root .bc23__content {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color-scheme: light;
+  }
+  .bc23__root .bc23__content.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__content {
+    background-color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color-scheme: dark;
+  }
+  .bc23__color-scheme--light .bc23__content,
+  .bc23__content.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color-scheme: light;
+  }
+  .bc23__color-scheme--dark .bc23__content,
+  .bc23__content.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color-scheme: dark;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root .bc23__content {
+    background-color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color-scheme: dark;
+  }
+  .bc23__root .bc23__content.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__content {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color-scheme: light;
+  }
+  .bc23__color-scheme--light .bc23__content,
+  .bc23__content.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color-scheme: light;
+  }
+  .bc23__color-scheme--dark .bc23__content,
+  .bc23__content.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color-scheme: dark;
+  }
+}
+@media (min-width: 768px) {
+  .bc23__root .bc23__content {
+    padding: var(--bc23__spacing__whitespace--base, 3rem) var(--bc23__spacing__whitespace--base, 3rem);
+  }
+}
+.bc23__root .bc23__content--banner {
+  padding: var(--bc23__spacing__whitespace--base, 3rem) var(--bc23__spacing__whitespace--petite, 2rem);
+}
+@media (min-width: 768px) {
+  .bc23__root .bc23__content--banner {
+    padding: var(--bc23__spacing__whitespace--base, 3rem);
+  }
+}
+.bc23__root .bc23__content--full-bleed {
+  padding: 0;
+}
+.bc23__root .bc23__content--full-bleed:first-of-type, .bc23__root .bc23__content--full-bleed:last-of-type {
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .bc23__root .bc23__content--full-bleed {
+    padding: 0;
+  }
+  .bc23__root .bc23__content--full-bleed:first-of-type, .bc23__root .bc23__content--full-bleed:last-of-type {
+    padding: 0;
+  }
+}
+.bc23__root .bc23__content--no-background {
+  background: none !important;
+}
+.bc23__root .bc23__content > *:last-child:not(hr) {
+  margin-bottom: 0;
+}
+.bc23__root .bc23__select {
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+}
+.bc23__root .bc23__select .bc23__select__caret {
+  border-width: thin;
+  border-style: solid;
+  height: 1rem;
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 0.7rem;
+  width: 1rem;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root .bc23__select .bc23__select__caret {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root .bc23__select .bc23__select__caret.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select .bc23__select__caret {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light .bc23__select .bc23__select__caret,
+  .bc23__select .bc23__select__caret.bc23__color-scheme--light {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark .bc23__select .bc23__select__caret,
+  .bc23__select .bc23__select__caret.bc23__color-scheme--dark {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root .bc23__select .bc23__select__caret {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root .bc23__select .bc23__select__caret.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select .bc23__select__caret {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light .bc23__select .bc23__select__caret,
+  .bc23__select .bc23__select__caret.bc23__color-scheme--light {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark .bc23__select .bc23__select__caret,
+  .bc23__select .bc23__select__caret.bc23__color-scheme--dark {
+    border-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root .bc23__select:focus-within .bc23__select__caret {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root .bc23__select:focus-within .bc23__select__caret.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select:focus-within .bc23__select__caret {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light .bc23__select:focus-within .bc23__select__caret,
+  .bc23__select:focus-within .bc23__select__caret.bc23__color-scheme--light {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark .bc23__select:focus-within .bc23__select__caret,
+  .bc23__select:focus-within .bc23__select__caret.bc23__color-scheme--dark {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root .bc23__select:focus-within .bc23__select__caret {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root .bc23__select:focus-within .bc23__select__caret.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select:focus-within .bc23__select__caret {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light .bc23__select:focus-within .bc23__select__caret,
+  .bc23__select:focus-within .bc23__select__caret.bc23__color-scheme--light {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark .bc23__select:focus-within .bc23__select__caret,
+  .bc23__select:focus-within .bc23__select__caret.bc23__color-scheme--dark {
+    border-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+.bc23__root .bc23__select select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)), 0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  font-size: 1.4rem;
+  max-width: 100%;
+  padding: 0.4rem 3rem 0.4rem 1rem;
+  transition: box-shadow 0.08s linear;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root .bc23__select select {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__root .bc23__select select.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select select {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__color-scheme--light .bc23__select select,
+  .bc23__select select.bc23__color-scheme--light {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__color-scheme--dark .bc23__select select,
+  .bc23__select select.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root .bc23__select select {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__root .bc23__select select.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select select {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__color-scheme--light .bc23__select select,
+  .bc23__select select.bc23__color-scheme--light {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc23__color-scheme--dark .bc23__select select,
+  .bc23__select select.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+    box-shadow: 0 0 0 0.15rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0.1rem 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+    color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+}
+.bc23__root .bc23__select select:focus {
+  outline: none;
+}
+@media (prefers-color-scheme: light) {
+  .bc23__root .bc23__select select:focus {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root .bc23__select select:focus.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select select:focus {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light .bc23__select select:focus,
+  .bc23__select select:focus.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark .bc23__select select:focus,
+  .bc23__select select:focus.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc23__root .bc23__select select:focus {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__root .bc23__select select:focus.bc23__color-scheme--inverted,
+  .bc23__color-scheme--inverted .bc23__root .bc23__select select:focus {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--light .bc23__select select:focus,
+  .bc23__select select:focus.bc23__color-scheme--light {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+  .bc23__color-scheme--dark .bc23__select select:focus,
+  .bc23__select select:focus.bc23__color-scheme--dark {
+    background-color: var(--bc23__color__light--bright, hsl(30deg, 8%, 95%));
+    box-shadow: 0 0 0 0.1rem var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%)),0 0 0.45rem 0.2rem var(--bc23__color__accent--bright, hsl(160deg, 49%, 80%)),0 0 0.85rem 0.2rem var(--bc23__color__accent--mid, hsl(160deg, 49%, 49%));
+    color: var(--bc23__color__accent--dark, hsl(160deg, 90%, 25%));
+  }
+}
+.bc23__root .bc23__sub-section {
+  display: block;
+  padding: 0 0 var(--bc23__spacing__whitespace--base, 3rem) 0;
+}
+.bc23__root .bc23__sub-section:first-of-type {
+  padding-top: 0;
+}
+.bc23__root .bc23__sub-section:last-of-type {
+  padding-bottom: 0;
+}
+.bc23__root .bc23__sub-section > *:last-child:not(hr) {
+  margin-bottom: 0;
+}

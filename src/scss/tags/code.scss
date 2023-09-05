@@ -1,0 +1,62 @@
+@use '../utils/colors';
+@use '../utils/fonts';
+@use '../utils/classes';
+@use '../utils/constants';
+@use '../utils/spacing';
+
+@mixin code {
+  code {
+    border-width: thin;
+    border-style: dashed;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 0 0.2rem;
+    padding: 0.1rem 0.6rem 0 0.6rem;
+    @include fonts.assign-font('code', 'normal');
+
+    @include colors.set-color-schemes((
+      'light': (
+        'border-color': colors.get-color('accent', 'dark'),
+        'color': colors.get-color('accent', 'dark')
+      ),
+      'dark': (
+        'border-color': colors.get-color('accent', 'bright'),
+        'color': colors.get-color('accent', 'bright')
+      )
+    ));
+
+    &.#{classes.set-class('code', 'no-margin')} {
+      margin: 0;
+    }
+
+    &.#{classes.set-class('code-block')} {
+      border: none;
+      border-left-width: constants.get-constant('border-width');
+      border-left-style: solid;
+      box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
+      display: block;
+      margin: 0 0 spacing.get-spacing('whitespace', 'petite') 0;
+      overflow: scroll;
+      padding: 1rem;
+
+      @include colors.set-color-schemes((
+        'light': (
+          'background-color': colors.get-color('light', 'bright'),
+          'border-color': colors.get-color('accent', 'mid'),
+          'color': colors.get-color('accent', 'dark')
+        ),
+        'dark': (
+          'background-color': colors.get-color('shadow', 'bright'),
+          'border-color': colors.get-color('accent', 'mid'),
+          'color': colors.get-color('light', 'bright')
+        )
+      ));
+    }
+
+    pre {
+      display: block;
+      height: auto;
+      width: auto;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use './custom-properties';
+
+/**
+ * Commonly used values.  Some of these may be configurable, but some are
+ * are static.
+ */
+$_constants: (
+  'border-width': 0.14rem
+);
+
+/**
+ * Returns the value of a given constant from the constats map.
+ */
+@function get-constant($constant) {
+  @if (map-has-key($_constants, $constant) == false) {
+    @error 'Constant #{$constant} could not be found.';
+  }
+
+  @return map.get($_constants, $constant);
+}

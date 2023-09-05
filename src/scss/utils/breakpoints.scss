@@ -1,0 +1,13 @@
+@use 'sass:map';
+
+$breakpoints: (
+  768: 'min-width: 768px'
+);
+
+@function get-breakpoint($breakpoint) {
+  @if (map-has-key($breakpoints, $breakpoint) == false) {
+    @error 'Breakpoint #{$breakpoint} could not be found.';
+  }
+  
+  @return #{map.get($breakpoints, $breakpoint)};
+}

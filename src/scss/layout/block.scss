@@ -1,0 +1,16 @@
+@use '../utils/classes' as *;
+@use '../utils/spacing' as *;
+
+@mixin block {
+  .#{set-class('block')} {
+    width: 100%;
+
+    &:first-of-type > .layout-content:first-of-type {
+      padding-top: get-spacing('whitespace', 'base');
+    }
+
+    &:last-of-type > .layout-content:last-of-type {
+      padding-bottom: get-spacing('whitespace', 'base');
+    }
+  }
+}
