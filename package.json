@@ -1,8 +1,9 @@
 {
   "name": "blog_copy_2023",
-  "version": "1.0.0",
-  "description": "Copy for general blog articles in 2023.",
+  "version": "0.0.1",
+  "description": "A style guide, CSS, and other assets designed to facilitate extended reading.",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./scripts/build.js --name='blog_copy'",
@@ -11,7 +12,7 @@
     "start": "node ./scripts/server.js"
   },
   "author": "Jon Richards",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "esbuild": "^0.17.2",
