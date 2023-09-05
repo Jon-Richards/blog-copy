@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/ts/blog_copy_2023.ts"],
-  "sourcesContent": ["console.log('test');\n"],
-  "mappings": "mBAAA,QAAQ,IAAI,MAAM",
-  "names": []
-}
