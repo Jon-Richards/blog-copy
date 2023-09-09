@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+$_breakpoints: (
+  '768': 768px
+);
+
+@mixin breakpoint($breakpoint) {
+  @media ( min-width: #{map-get($_breakpoints, $breakpoint)} ) {
+    @content;
+  }
+}

@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+$_dimensions: (
+  'petite': 0.8rem,
+  'base': 1rem,
+  'grande': 2rem
+);
+
+@function get-dimension($dimension) {
+  @return map-get($_dimensions, $dimension);
+}
