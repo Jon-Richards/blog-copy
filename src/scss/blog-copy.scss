@@ -1,113 +1,11 @@
-@use 'sass:map';
-@use './utils/breakpoints' as *;
-@use './layout/block' as *;
-@use './utils/classes' as *;
-@use './utils/colors' as *;
-@use './layout/content' as *;
-@use './utils/custom-properties' as *;
-@use './utils/fonts';
-@use './utils/reset' as *;
-@use './tags/anchors' as *;
-@use './tags/aside' as *;
-@use './tags/blockquote' as *;
-@use './tags/code' as *;
-@use './tags/em' as *;
-@use './tags/headings' as *;
-@use './tags/hr' as *;
-@use './tags/i' as *;
-@use './tags/lists' as *;
-@use './tags/p' as *;
-@use './inputs/select' as *;
-@use './utils/spacing' as *;
-@use './tags/strong' as *;
-@use './layout/sub-section' as *;
+@use './main';
 
 /**
- * Applies a configuration map to the style guide.  This mixin should be
- * included before including the render() mixin.
+ * Default configuration.  It's assumed that this property will be overwritten
+ * when the used as a SASS library rather than a standalone CSS library.
  */
-@mixin configure($configuration: ()) {
-  $namespace: map.get($configuration, 'namespace');
-  @if $namespace {
-    @include set-namespace($namespace);
-    @include set-class-namespace($namespace);
-  }
+$options: ();
 
-  $spacing: map.get($configuration, 'spacing');
-  @if $spacing {
-    @include set-spacing($spacing);
-  }
+@include main.configure($options);
 
-  $palette: map.get($configuration, 'colors');
-  @if $palette {
-    @include set-color-palette($palette);
-  }
-
-  $fonts: map.get($configuration, 'fonts');
-  @if $fonts {
-    @include fonts.set-fonts($fonts);
-  }
-}
-
-@mixin render {
-  .#{set-class('root')} {
-    @include reset;
-    @include declare-color-properties;
-    @include fonts.declare-font-properties;
-    @include declare-spacing-properties;
-
-    &, *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    @include fonts.assign-font('copy', 'normal');
-    font-size: 100%;
-    min-height: 100vh;
-    padding: 0;
-    text-rendering: optimizeLegibility;
-
-    @include set-color-schemes((
-      'light': (
-        'background-color': get-color('light', 'mid')
-      ),
-      'dark': (
-        'background-color': get-color('shadow', 'mid')
-      )
-    ), false);
-
-    ::selection {
-      background-color: get-color('accent', 'mid');
-      color: get-color('light', 'bright');
-    }
-
-    .meta::after {
-      border-bottom: 0.4rem double get-color('accent', 'mid');
-      content: ' ';
-      display: block;
-      margin: get-spacing('whitespace', 'petite') 0;
-      max-width: 5rem;
-    }
-
-    .meta-info {
-      font-style: italic;
-      line-height: 1.2;
-      margin: 0 0 1rem 0;
-    }
-
-    @include anchors;
-    @include aside;
-    @include blockquote;
-    @include code;
-    @include em;
-    @include headings;
-    @include hr;
-    @include i;
-    @include lists;
-    @include p;
-    @include strong;
-    @include block;
-    @include content;
-    @include select;
-    @include sub-section;
-  }
-}
+@include main.render();

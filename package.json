@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./scripts/build.js --name='blog-copy'",
     "build:docs": "node ./scripts/build-docs.js --name='blog_copy'",
     "build:docs:watch": "nodemon --watch 'src/**/*' -e js,ts,html,scss ./scripts/build-docs.js --name='blog_copy'",
     "typecheck:watch": "tsc --watch",
