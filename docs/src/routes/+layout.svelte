@@ -1,23 +1,29 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog Copy</title>
-  </head>
-  <body>
-    <div class="main">
-      <div class="nav-column">
-        <MainNav />
-      </div>
-      <div class="content-column">
-        <slot></slot>
-      </div>
+<div class="main">
+  <div class="nav-column">
+    <MainNav />
+  </div>
+  <div class="content-column">
+    <div class="bc__root">
+      <p>Hello world!</p>
+      <p>These paragraphs are using the style guide!</p>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
     </div>
-    <div class="footer">
-      &copy; Jon Richards, All rights reserved.
-    </div>
-  </body>
-</html>
+    <slot></slot>
+  </div>
+</div>
+<div class="footer">
+  &copy; Jon Richards, All rights reserved.
+</div>
+
+<svelte:head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Copy</title>
+  <link rel="stylesheet" href="blog-copy.css" />
+</svelte:head>
 
 <style lang="scss">
   @use '$lib/utils/breakpoints' as *;
