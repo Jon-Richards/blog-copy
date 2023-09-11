@@ -1,11 +1,25 @@
 @use 'sass:map';
 
 $_breakpoints: (
-  '768': 768px
+  '768': 768px,
+  '1024': 1024px,
+  '1280': 1280px,
+  '1440': 1440px,
+  '2048': 2048px
 );
 
-@mixin breakpoint($breakpoint) {
-  @media ( min-width: #{map-get($_breakpoints, $breakpoint)} ) {
+@mixin get($breakpoint, $offset: 0rem) {
+  $_value: #{map-get($_breakpoints, $breakpoint)};
+
+  @if ($offset) {
+    $_value: calc( #{map-get($_breakpoints, $breakpoint)} + #{$offset});
+  }
+
+  @media ( min-width: $_value ) {
     @content;
   }
+}
+
+@function value($breakpoint) {
+  @return #{map-get($_breakpoints, $breakpoint)};
 }

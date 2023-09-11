@@ -3,10 +3,10 @@
 $_colors: (
   'shadow--dim': hsl(20deg 2% 10%),
   'shadow--mid': hsl(20deg 2% 14%),
-  'shadow--bright': hsl(20deg 2% 18%),
-  'light--dim': hsl(20deg 50% 88%),
-  'light--mid': hsl(20deg 50% 94%),
-  'light--bright': hsl(20deg 50% 100%),
+  'shadow--bright': hsl(20deg 2% 20%),
+  'light--dim': hsl(20deg 2% 60%),
+  'light--mid': hsl(20deg 2% 80%),
+  'light--bright': hsl(20deg 2% 100%),
   'accent--dim': hsl(20deg 100% 60%),
   'accent--mid': hsl(20deg 100% 64%),
   'accent--bright': hsl(20deg 100% 68%),
@@ -18,7 +18,7 @@ $_colors: (
   }
 }
 
-@function get-color($color) {
+@function get($color) {
   @if map-has-key($_colors, $color) == false {
     @error 'Color not found.';
   }
