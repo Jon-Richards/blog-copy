@@ -2,10 +2,10 @@
 
 $_dimensions: (
   'petite': 0.8rem,
-  'base': 1rem,
-  'grande': 2rem
+  'base': 1.2rem,
+  'grande': 3rem
 );
 
-@function get-dimension($dimension) {
+@function get($dimension) {
   @return map-get($_dimensions, $dimension);
 }

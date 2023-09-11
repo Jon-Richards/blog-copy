@@ -1,0 +1,21 @@
+@mixin inclusively-hidden {
+  &:not(:focus):not(:focus-within):not(:active) {
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
+
+@mixin negate-inclusively-hidden {
+  &:not(:focus):not(:focus-within):not(:active) {
+    clip-path: none;
+    height: auto;
+    overflow: auto;
+    position: relative;
+    white-space: normal;
+    width: auto;
+  }
+}
