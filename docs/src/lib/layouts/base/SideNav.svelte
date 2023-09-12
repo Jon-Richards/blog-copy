@@ -59,7 +59,7 @@
 
 <script lang="ts">
   import IndexList from '$lib/index_list';
-  import config from '$config';
+  import CONFIG from '$config';
 
-  const sections = config.sections;
+  const sections = CONFIG.sections;
 </script>

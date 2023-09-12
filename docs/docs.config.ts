@@ -14,7 +14,7 @@ export type Config = {
   sections: Section[];
 }
 
-const config: Config = {
+const CONFIG: Config = {
   'project': {
     'title': 'Blog Copy',
     'copyright': 'Jon Richards, All rights reserved.'
@@ -73,4 +73,4 @@ const config: Config = {
   ]
 }
 
-export default config;
+export default CONFIG;
