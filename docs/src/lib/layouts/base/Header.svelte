@@ -5,9 +5,9 @@
         {pageTitle}
       </div>
       <div class="menu-link">
-        <Link href="#index">
+        <IndexButton id="menu-btn" on:click={scrollToIndex}>
           <span class="icon material-symbols-outlined">menu</span>
-        </Link>
+        </IndexButton>
       </div>
     </div>
   </ContentBlock>
@@ -15,9 +15,18 @@
 
 <script lang="ts">
   import ContentBlock from '$lib/ContentBlock.svelte';
-  import Link from '$lib/Link.svelte';
+  import IndexButton from './IndexButton.svelte';
 
   export let pageTitle: string;
+
+  function scrollToIndex() {
+    const nav = document.querySelector('nav');
+    if (nav) {
+      const rect = nav.getBoundingClientRect();
+      const navY = window.scrollY + rect.y;
+      window.scrollTo({top: navY, left: window.scrollX, behavior: 'smooth'});
+    }
+  }
 </script>
 
 <style lang="scss">
