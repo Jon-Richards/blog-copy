@@ -1,0 +1,1 @@
+{"version":3,"file":"client.js","sources":["../../src/lib/client/index.ts"],"sourcesContent":["console.log('hello from client index!');\n\nexport {};\n"],"names":[],"mappings":"AAAA,QAAQ,IAAI,0BAA0B;"}
