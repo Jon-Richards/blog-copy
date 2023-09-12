@@ -53,6 +53,7 @@
 
     background-color: colors.get('shadow--dim');
     color: colors.get('light--bright');
+    color-scheme: dark;
     font-size: 100%;
     margin: 0;
     padding: 0;
@@ -104,7 +105,6 @@
       flex-basis: 14rem;
       height: 100%;
       order: 1;
-      overflow-y: scroll;
     }
   }
 
