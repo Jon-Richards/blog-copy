@@ -1,17 +1,17 @@
-type Section = {
+export type Section = {
   title: string;
   slug: string;
   subsections?: Section[];
 }
 
-type Project = {
+export type Project = {
   title: string;
   copyright: string;
 }
 
 export type Config = {
   project: Project;
-  sections: Section[];
+  sitemap: Section[];
 }
 
 const CONFIG: Config = {
@@ -19,54 +19,60 @@ const CONFIG: Config = {
     'title': 'Blog Copy',
     'copyright': 'Jon Richards, All rights reserved.'
   },
-  'sections': [
+  'sitemap': [
     {
-      'title': 'Overview',
-      'slug': '/overview',
+      'title': 'Documentation',
+      'slug': '/docs',
       'subsections': [
         {
-          'title': 'Introduction',
-          'slug': '/introduction'
+          'title': 'Overview',
+          'slug': '/overview',
+          'subsections': [
+            {
+              'title': 'Introduction',
+              'slug': '/docs/overview/introduction'
+            },
+            {
+              'title': 'Installation',
+              'slug': '/docs/overview/installation'
+            },
+            {
+              'title': 'Configuration',
+              'slug': '/docs/overview/configuration'
+            }
+          ]
         },
         {
-          'title': 'Installation',
-          'slug': '/installation'
+          'title': 'Style Guide',
+          'slug': '/style-guide',
+          'subsections': [
+            {
+              'title': 'Conventions',
+              'slug': '/docs/style-guide/conventions'
+            },
+            {
+              'title': 'Page Structure',
+              'slug': '/docs/style-guide/page-structure'
+            },
+            {
+              'title': 'Colors',
+              'slug': '/docs/style-guide/colors'
+            },
+            {
+              'title': 'Fonts',
+              'slug': '/docs/style-guide/fonts'
+            },
+          ]
         },
         {
-          'title': 'Configuration',
-          'slug': '/configuration'
-        }
-      ]
-    },
-    {
-      'title': 'Style Guide',
-      'slug': '/style-guide',
-      'subsections': [
-        {
-          'title': 'Conventions',
-          'slug': '/conventions'
-        },
-        {
-          'title': 'Page Structure',
-          'slug': '/page-structure'
-        },
-        {
-          'title': 'Colors',
-          'slug': '/colors'
-        },
-        {
-          'title': 'Fonts',
-          'slug': '/fonts'
-        },
-      ]
-    },
-    {
-      'title': 'HTML Tags',
-      'slug': '/html-tags',
-      'subsections': [
-        {
-          'title': 'Anchors &amp; Links',
-          'slug': '/anchors-and-links'
+          'title': 'HTML Tags',
+          'slug': '/html-tags',
+          'subsections': [
+            {
+              'title': 'Anchors &amp; Links',
+              'slug': '/docs/html-tags/anchors-and-links'
+            }
+          ]
         }
       ]
     }

@@ -1,11 +1,10 @@
 <nav>
   <ul class="index">
-    {#each sections as section}
+    {#each docSections as section}
       {#if section.subsections}
         <li>
           <IndexList
             title={section.title}
-            slug={section.slug}
             items={section.subsections}
           />
         </li>
@@ -59,7 +58,5 @@
 
 <script lang="ts">
   import IndexList from '$lib/index_list';
-  import CONFIG from '$config';
-
-  const sections = CONFIG.sections;
+  import { docSections } from './SideNav';
 </script>

@@ -22,11 +22,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="blog-copy.css" />
-  <script src="/client/client.js"></script>
 </svelte:head>
 
 <style lang="scss">
   @use '$lib/utils/breakpoints';
+  @use '$lib/utils/constants';
   @use '$lib/utils/colors';
   @use '$lib/utils/dimensions';
   @use '$lib/utils/fonts';
@@ -102,7 +102,7 @@
     order: 2;
 
     @include breakpoints.get('1280') {
-      flex-basis: 14rem;
+      flex-basis: constants.$SIDE_BAR_WIDTH;
       height: 100%;
       order: 1;
     }
@@ -122,7 +122,7 @@
 <script lang="ts">
   import Header from './Header.svelte';
   import Footer from './Footer.svelte';
-  import SideNav from './SideNav.svelte';
+  import SideNav from './side_nav';
   import CONFIG from '$config';
 
   const { project: { title, copyright } } = CONFIG;

@@ -1,8 +1,8 @@
 <div>{title}</div>
 <ul>
-  {#each links as link}
+  {#each items as item}
     <li>
-      <Link href={link.slug}>{@html link.title}</Link>
+      <Link href={item.slug}>{@html item.title}</Link>
     </li>
   {/each}
 </ul>
@@ -36,7 +36,6 @@
   import Link from './Link.svelte';
 
   export let title: string;
-  export let slug: string;
 
   interface ILink {
     title: string;
@@ -44,12 +43,4 @@
   }
 
   export let items: ILink[];
-
-  const links = items.map(item => (
-    { title: item.title, slug: buildLinkRoute(item) }
-  ));
-
-  function buildLinkRoute(link: ILink): string {
-    return `${slug}${link.slug}`;
-  }
 </script>
