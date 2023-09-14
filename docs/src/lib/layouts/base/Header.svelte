@@ -14,7 +14,7 @@
 </header>
 
 <script lang="ts">
-  import ContentBlock from '$lib/ContentBlock.svelte';
+  import ContentBlock from '$lib/components/ContentBlock.svelte';
   import IndexButton from './IndexButton.svelte';
 
   export let pageTitle: string;
@@ -53,7 +53,7 @@
 
     /*
      * Offset the next breakpoint so that the padding doesn't negate until the
-     * content would no longer appear flush with the edge of it alotted space.
+     * content would no longer appear flush with the edge of it allotted space.
      */
     $_horizontal-padding: (dimensions.get('base') * 2);
 

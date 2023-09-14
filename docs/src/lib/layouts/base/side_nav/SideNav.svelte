@@ -57,6 +57,6 @@
 </style>
 
 <script lang="ts">
-  import IndexList from '$lib/index_list';
+  import IndexList from '$lib/components/index_list';
   import { docSections } from './SideNav';
 </script>

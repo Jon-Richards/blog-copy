@@ -7,7 +7,7 @@
 </footer>
 
 <script lang="ts">
-  import ContentBlock from '$lib/ContentBlock.svelte';
+  import ContentBlock from '$lib/components/ContentBlock.svelte';
 
   export let copyright: string;
 </script>
