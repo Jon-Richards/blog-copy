@@ -37,6 +37,12 @@ const CONFIG: Config = {
         {
           'title': 'Style Guide',
           'slug': '/style-guide',
+          'subsections': [
+            {
+              'title': 'Color Schemes',
+              'slug': '/docs/style-guide/color-schemes'
+            }
+          ]
         },
         {
           'title': 'HTML Tags',
