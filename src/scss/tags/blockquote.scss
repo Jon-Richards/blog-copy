@@ -60,7 +60,7 @@
       }
     }
 
-    figcaption {
+    footer {
       display: block;
       @include fonts.assign-font('copy', 'normal');
       font-weight: 600;

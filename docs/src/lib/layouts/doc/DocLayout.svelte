@@ -1,6 +1,5 @@
 <div class="content">
   <div class="on-this-page">
-    On this page
   </div>
 
   <div class="content-safe">
@@ -14,7 +13,6 @@
   @use '$lib/utils/colors';
 
   .content {
-    background-color: #003;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -27,7 +25,6 @@
 
   .on-this-page {
     @include breakpoints.get('1024') {
-      background-color: #005;
       flex-basis: constants.$SIDE_BAR_WIDTH;
       order: 2;
     }
@@ -38,7 +35,6 @@
       $_gutter: 28rem;
       order: 1;
       flex-grow: 1;
-      // max-width: calc(100% - $_gutter);
     }
   }
 </style>
