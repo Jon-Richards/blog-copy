@@ -4,7 +4,7 @@
 
 | Severity | ID      | Area        | Description                               |
 |----------|---------|-------------|-------------------------------------------|
-| Critical | #3      | Pages       | Begin adding pages for each route.        |
+| Critical | #9      | Pages       | Add pages for style guide.                |
 
 
 ## Backlog
@@ -27,3 +27,4 @@
 |----------|---------|-------------|-------------------------------------------|
 | Critical | #1      | Readme      | Flesh out README.md                       |
 | Critical | #2      | Routes      | Update routes to support doc layout.      |
+| Critical | #3      | Pages       | Begin adding pages for each route.        |
