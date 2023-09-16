@@ -31,38 +31,12 @@ const CONFIG: Config = {
             {
               'title': 'Introduction',
               'slug': '/docs/overview/introduction'
-            },
-            {
-              'title': 'Installation',
-              'slug': '/docs/overview/installation'
-            },
-            {
-              'title': 'Configuration',
-              'slug': '/docs/overview/configuration'
             }
           ]
         },
         {
           'title': 'Style Guide',
           'slug': '/style-guide',
-          'subsections': [
-            {
-              'title': 'Conventions',
-              'slug': '/docs/style-guide/conventions'
-            },
-            {
-              'title': 'Page Structure',
-              'slug': '/docs/style-guide/page-structure'
-            },
-            {
-              'title': 'Colors',
-              'slug': '/docs/style-guide/colors'
-            },
-            {
-              'title': 'Fonts',
-              'slug': '/docs/style-guide/fonts'
-            },
-          ]
         },
         {
           'title': 'HTML Tags',
@@ -71,6 +45,34 @@ const CONFIG: Config = {
             {
               'title': 'Anchors &amp; Links',
               'slug': '/docs/html-tags/anchors-and-links'
+            },
+            {
+              'title': 'Aside',
+              'slug': '/docs/html-tags/aside'
+            },
+            {
+              'title': 'Blockquote',
+              'slug': '/docs/html-tags/blockquote'
+            },
+            {
+              'title': 'Code Snippets',
+              'slug': '/docs/html-tags/code-snippets'
+            },
+            {
+              'title': 'Headings',
+              'slug': '/docs/html-tags/headings'
+            },
+            {
+              'title': 'Horizontal Rule',
+              'slug': '/docs/html-tags/hr'
+            },
+            {
+              'title': 'Lists',
+              'slug': '/docs/html-tags/lists'
+            },
+            {
+              'title': 'Text',
+              'slug': '/docs/html-tags/text'
             }
           ]
         }

@@ -75,6 +75,11 @@
       )
     ), false);
 
+    &--contained {
+      min-height: initial;
+      height: 100%;
+    }
+
     ::selection {
       background-color: get-color('accent', 'mid');
       color: get-color('light', 'bright');
