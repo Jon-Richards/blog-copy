@@ -65,14 +65,21 @@
       @include fonts.assign-font('copy', 'normal');
       font-weight: 600;
       margin-top: 1rem;
+      line-height: 1.6;
       text-align: right;
+
+      &::before {
+        content: '\2014';
+        display: inline-block;
+        padding-right: calc(spacing.get-spacing('whitespace', 'pixie') / 2);
+      }
     }
 
     cite {
       display: block;
       @include fonts.assign-font('copy', 'normal');
       font-style: italic;
-      text-align: right;
+      margin-top: spacing.get-spacing('whitespace', 'pixie');
     }
   }
 }

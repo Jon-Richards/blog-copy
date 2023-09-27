@@ -98,6 +98,7 @@
   --bc__font__copy__font-weight--bold: 700;
   --bc__font__code__font-family: monospace;
   --bc__font__code__font-weight--normal: 400;
+  --bc__spacing__whitespace--pixie: 0.4rem;
   --bc__spacing__whitespace--petite: 2rem;
   --bc__spacing__whitespace--base: 3rem;
   --bc__spacing__whitespace--grande: 6rem;
@@ -428,14 +429,20 @@
   font-weight: var(--bc__font__copy__font-weight--normal, 400);
   font-weight: 600;
   margin-top: 1rem;
+  line-height: 1.6;
   text-align: right;
+}
+.bc__root figure.bc__blockquote footer::before {
+  content: "—";
+  display: inline-block;
+  padding-right: calc(var(--bc__spacing__whitespace--pixie, 0.4rem) / 2);
 }
 .bc__root figure.bc__blockquote cite {
   display: block;
   font-family: var(--bc__font__copy__font-family, Georgia, serif);
   font-weight: var(--bc__font__copy__font-weight--normal, 400);
   font-style: italic;
-  text-align: right;
+  margin-top: var(--bc__spacing__whitespace--pixie, 0.4rem);
 }
 .bc__root code {
   border-width: thin;

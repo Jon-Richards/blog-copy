@@ -9,7 +9,7 @@
         </p>
       </blockquote>
       <footer>
-        &#8212; 1 Corinthians 13:11
+        1 Corinthians 13:11
         <cite>
           King James Version
         </cite>
@@ -25,7 +25,7 @@
     &lt;/p&gt;
   &lt;/blockquote&gt;
   &lt;footer&gt;
-    &amp;#8212; 1 Corinthians 13:11
+    1 Corinthians 13:11
     &lt;cite&gt;
       King James Version
     &lt;/cite&gt;
@@ -45,7 +45,7 @@
         </p>
       </blockquote>
       <footer>
-        &#8212; 1 Corinthians 13:11
+        1 Corinthians 13:11
         <cite>
           King James Version
         </cite>
