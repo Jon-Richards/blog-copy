@@ -7,7 +7,7 @@
 @use '../utils/spacing';
 
 @mixin blockquote {
-  figure.#{classes.set-class('blockquote')} {
+  blockquote {
     border-width: constants.get-constant('border-width') 0;
     border-style: solid;
     box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
@@ -27,7 +27,7 @@
       )
     ));
 
-    blockquote {
+    .#{classes.set-class('blockquote__body')} {
       margin-bottom: 2rem;
       padding: 2.2rem 0 0 0;
       position: relative;
