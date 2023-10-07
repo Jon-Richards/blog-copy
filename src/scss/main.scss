@@ -33,11 +33,6 @@
     @include set-class-namespace($namespace);
   }
 
-  $spacing: map.get($configuration, 'spacing');
-  @if $spacing {
-    @include set-spacing($spacing);
-  }
-
   $palette: map.get($configuration, 'colors');
   @if $palette {
     @include set-color-palette($palette);
@@ -46,6 +41,11 @@
   $fonts: map.get($configuration, 'fonts');
   @if $fonts {
     @include fonts.set-fonts($fonts);
+  }
+
+  $spacing: map.get($configuration, 'spacing');
+  @if $spacing {
+    @include set-spacing($spacing);
   }
 }
 

@@ -31,6 +31,10 @@ const CONFIG: Config = {
             {
               'title': 'Introduction',
               'slug': '/docs/overview/introduction'
+            },
+            {
+              'title': 'Configuration',
+              'slug': '/docs/overview/configuration'
             }
           ]
         },
