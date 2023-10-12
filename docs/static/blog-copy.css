@@ -1388,3 +1388,45 @@
 .bc__root .bc__sub-section > *:last-child:not(hr) {
   margin-bottom: 0;
 }
+@media (prefers-color-scheme: light) {
+  .bc__root .bc__tape {
+    background-color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+  }
+  .bc__root .bc__tape.bc__color-scheme--inverted,
+  .bc__color-scheme--inverted .bc__root .bc__tape {
+    background-color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc__color-scheme--light .bc__tape,
+  .bc__tape.bc__color-scheme--light {
+    background-color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+  }
+  .bc__color-scheme--dark .bc__tape,
+  .bc__tape.bc__color-scheme--dark {
+    background-color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .bc__root .bc__tape {
+    background-color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+  .bc__root .bc__tape.bc__color-scheme--inverted,
+  .bc__color-scheme--inverted .bc__root .bc__tape {
+    background-color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+  }
+  .bc__color-scheme--light .bc__tape,
+  .bc__tape.bc__color-scheme--light {
+    background-color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+    color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+  }
+  .bc__color-scheme--dark .bc__tape,
+  .bc__tape.bc__color-scheme--dark {
+    background-color: var(--bc__color__shadow--dark, hsl(20deg, 8%, 0%));
+    color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
+  }
+}

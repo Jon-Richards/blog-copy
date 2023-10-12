@@ -23,6 +23,7 @@
 @use './layout/sub-section' as *;
 @use './components/banner' as *;
 @use './components/meta' as *;
+@use './components/tape' as *;
 
 /**
  * Applies a configuration map to the style guide.  This mixin should be
@@ -104,5 +105,6 @@
     @include content;
     @include select;
     @include sub-section;
+    @include tape;
   }
 }

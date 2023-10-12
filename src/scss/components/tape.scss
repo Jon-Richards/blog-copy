@@ -1,0 +1,18 @@
+@use '../utils/classes';
+@use '../utils/colors';
+@use '../utils/spacing';
+
+@mixin tape {
+  .#{classes.set-class('tape')} {
+    @include colors.set-color-schemes((
+      'light': (
+        'background-color': colors.get-color('light', 'bright'),
+        'color': colors.get-color('shadow', 'dark')
+      ),
+      'dark': (
+        'background-color': colors.get-color('shadow', 'dark'),
+        'color': colors.get-color('light', 'bright')
+      )
+    ));
+  }
+}
