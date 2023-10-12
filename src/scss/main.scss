@@ -21,6 +21,8 @@
 @use './utils/spacing' as *;
 @use './tags/strong' as *;
 @use './layout/sub-section' as *;
+@use './components/banner' as *;
+@use './components/meta' as *;
 
 /**
  * Applies a configuration map to the style guide.  This mixin should be
@@ -85,22 +87,9 @@
       color: get-color('light', 'bright');
     }
 
-    .meta::after {
-      border-bottom: 0.4rem double get-color('accent', 'mid');
-      content: ' ';
-      display: block;
-      margin: get-spacing('whitespace', 'petite') 0;
-      max-width: 5rem;
-    }
-
-    .meta-info {
-      font-style: italic;
-      line-height: 1.2;
-      margin: 0 0 1rem 0;
-    }
-
     @include anchors;
     @include aside;
+    @include banner;
     @include blockquote;
     @include code;
     @include em;
@@ -108,6 +97,7 @@
     @include hr;
     @include i;
     @include lists;
+    @include meta;
     @include p;
     @include strong;
     @include block;

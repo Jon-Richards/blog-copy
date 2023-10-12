@@ -1,0 +1,10 @@
+@use '../utils/classes';
+
+@mixin banner {
+  .#{classes.set-class('banner')} {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

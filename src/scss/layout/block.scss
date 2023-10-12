@@ -3,6 +3,7 @@
 
 @mixin block {
   .#{set-class('block')} {
+    position: relative;
     width: 100%;
 
     &:first-of-type > .layout-content:first-of-type {

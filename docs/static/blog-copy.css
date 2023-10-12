@@ -81,8 +81,8 @@
      License: none (public domain)
   */
   /* HTML5 display-role reset for older browsers */
-  --bc__color__light--dark: hsl(30deg, 8%, 70%);
-  --bc__color__light--mid: hsl(30deg, 8%, 85%);
+  --bc__color__light--dark: hsl(30deg, 8%, 85%);
+  --bc__color__light--mid: hsl(30deg, 8%, 90%);
   --bc__color__light--bright: hsl(30deg, 8%, 95%);
   --bc__color__shadow--dark: hsl(20deg, 8%, 0%);
   --bc__color__shadow--mid: hsl(20deg, 8%, 7%);
@@ -156,7 +156,7 @@
 }
 @media (prefers-color-scheme: light) {
   .bc__root {
-    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 85%));
+    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 90%));
   }
   .bc__root.bc__color-scheme--inverted,
   .bc__color-scheme--inverted .bc__root {
@@ -164,7 +164,7 @@
   }
   .bc__color-scheme--light .bc__root,
   .bc__root.bc__color-scheme--light {
-    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 85%));
+    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 90%));
   }
   .bc__color-scheme--dark .bc__root,
   .bc__root.bc__color-scheme--dark {
@@ -177,11 +177,11 @@
   }
   .bc__root.bc__color-scheme--inverted,
   .bc__color-scheme--inverted .bc__root {
-    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 85%));
+    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 90%));
   }
   .bc__color-scheme--light .bc__root,
   .bc__root.bc__color-scheme--light {
-    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 85%));
+    background-color: var(--bc__color__light--mid, hsl(30deg, 8%, 90%));
   }
   .bc__color-scheme--dark .bc__root,
   .bc__root.bc__color-scheme--dark {
@@ -195,18 +195,6 @@
 .bc__root ::selection {
   background-color: var(--bc__color__accent--mid, hsl(160deg, 49%, 49%));
   color: var(--bc__color__light--bright, hsl(30deg, 8%, 95%));
-}
-.bc__root .meta::after {
-  border-bottom: 0.4rem double var(--bc__color__accent--mid, hsl(160deg, 49%, 49%));
-  content: " ";
-  display: block;
-  margin: var(--bc__spacing__whitespace--petite, 2rem) 0;
-  max-width: 5rem;
-}
-.bc__root .meta-info {
-  font-style: italic;
-  line-height: 1.2;
-  margin: 0 0 1rem 0;
 }
 .bc__root a:link, .bc__root a:visited, .bc__root a:active {
   color: inherit;
@@ -313,6 +301,12 @@
     background-color: var(--bc__color__shadow--bright, hsl(200deg, 8%, 14%));
     border-color: var(--bc__color__accent--mid, hsl(160deg, 49%, 49%));
   }
+}
+.bc__root .bc__banner {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .bc__root blockquote {
   border-width: 0.14rem 0;
@@ -1048,6 +1042,21 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
+.bc__root .bc__meta::after {
+  border-bottom: 0.4rem double var(--bc__color__accent--mid, hsl(160deg, 49%, 49%));
+  content: " ";
+  display: block;
+  margin: var(--bc__spacing__whitespace--petite, 2rem) 0;
+  max-width: 5rem;
+}
+.bc__root .bc__meta--no-bottom-margin::after {
+  margin: var(--bc__spacing__whitespace--petite, 2rem) 0 0 0;
+}
+.bc__root .bc__meta-info {
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+}
 .bc__root p {
   font-size: 1.4rem;
   line-height: 1.8;
@@ -1060,6 +1069,7 @@
   font-weight: 700;
 }
 .bc__root .bc__block {
+  position: relative;
   width: 100%;
 }
 .bc__root .bc__block:first-of-type > .layout-content:first-of-type {
@@ -1072,6 +1082,7 @@
   color-scheme: normal;
   margin: 0 auto;
   padding: var(--bc__spacing__whitespace--grande, 6rem) var(--bc__spacing__whitespace--petite, 2rem);
+  position: relative;
   max-width: 64rem;
   width: 100%;
 }

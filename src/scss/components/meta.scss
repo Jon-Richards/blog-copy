@@ -1,0 +1,25 @@
+@use '../utils/classes';
+@use '../utils/spacing';
+@use '../utils/colors';
+
+@mixin meta {
+  .#{classes.set-class('meta')} {
+    &::after {
+      border-bottom: 0.4rem double colors.get-color('accent', 'mid');
+      content: ' ';
+      display: block;
+      margin: spacing.get-spacing('whitespace', 'petite') 0;
+      max-width: 5rem;
+    }
+
+    &--no-bottom-margin::after {
+      margin: spacing.get-spacing('whitespace', 'petite') 0 0 0;
+    }
+
+    &-info {
+      font-style: italic;
+      line-height: 1.2;
+      margin: 0 0 1rem 0;
+    }
+  }
+}

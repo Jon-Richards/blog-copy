@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../src/ts/blog-copy.ts"],
-  "sourcesContent": ["console.log('test');\n"],
-  "mappings": "mBAAA,QAAQ,IAAI,MAAM",
-  "names": []
+  "sources": ["../src/ts/populate-meta.ts"],
+  "sourcesContent": ["function populateMetaNodes() {\n  const metaNodes = document.querySelectorAll('.meta-info');\n  if (metaNodes.length) {\n    metaNodes.forEach(node => populateMetaNode(node as HTMLElement));\n  }\n}\n\nfunction populateMetaNode(node: HTMLElement) {\n  let metaName = node.dataset.metaName ?? '';\n  if (metaName.length) {\n    const metaTag = document.querySelector(`meta[name='${metaName}']`);\n    const content = metaTag?.getAttribute('content') ?? '';\n    content.length ? node.innerHTML = content : hideMetaNode(node);\n  }\n}\n\nfunction hideMetaNode(node: HTMLElement) {\n  node.style.display = 'none';\n}\n\nfunction showMeta() {\n  const meta = document.querySelector('.meta');\n  if (meta) {\n    const foundMeta = meta as HTMLElement;\n    foundMeta.style.display = 'block';\n  }\n}\n\nexport function populateMeta() {\n  populateMetaNodes();\n  showMeta();\n}\n"],
+  "mappings": "mBAAA,SAASA,GAAoB,CAC3B,IAAMC,EAAY,SAAS,iBAAiB,YAAY,EACpDA,EAAU,QACZA,EAAU,QAAQC,GAAQC,EAAiBD,CAAmB,CAAC,CAEnE,CAEA,SAASC,EAAiBD,EAAmB,CAP7C,IAAAE,EAAAC,EAQE,IAAIC,GAAWF,EAAAF,EAAK,QAAQ,WAAb,KAAAE,EAAyB,GACxC,GAAIE,EAAS,OAAQ,CACnB,IAAMC,EAAU,SAAS,cAAc,cAAcD,KAAY,EAC3DE,GAAUH,EAAAE,GAAA,YAAAA,EAAS,aAAa,aAAtB,KAAAF,EAAoC,GACpDG,EAAQ,OAASN,EAAK,UAAYM,EAAUC,EAAaP,CAAI,CAC/D,CACF,CAEA,SAASO,EAAaP,EAAmB,CACvCA,EAAK,MAAM,QAAU,MACvB,CAEA,SAASQ,GAAW,CAClB,IAAMC,EAAO,SAAS,cAAc,OAAO,EAC3C,GAAIA,EAAM,CACR,IAAMC,EAAYD,EAClBC,EAAU,MAAM,QAAU,OAC5B,CACF,CAEO,SAASC,GAAe,CAC7Bb,EAAkB,EAClBU,EAAS,CACX",
+  "names": ["populateMetaNodes", "metaNodes", "node", "populateMetaNode", "_a", "_b", "metaName", "metaTag", "content", "hideMetaNode", "showMeta", "meta", "foundMeta", "populateMeta"]
 }

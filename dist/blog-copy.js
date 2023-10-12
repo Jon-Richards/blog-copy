@@ -1,2 +1,2 @@
-"use strict";(()=>{console.log("test");})();
+"use strict";(()=>{function c(){let e=document.querySelectorAll(".meta-info");e.length&&e.forEach(t=>m(t))}function m(e){var o,a;let t=(o=e.dataset.metaName)!=null?o:"";if(t.length){let n=document.querySelector(`meta[name='${t}']`),l=(a=n==null?void 0:n.getAttribute("content"))!=null?a:"";l.length?e.innerHTML=l:u(e)}}function u(e){e.style.display="none"}function s(){let e=document.querySelector(".meta");if(e){let t=e;t.style.display="block"}}function i(){c(),s()}})();
 //# sourceMappingURL=blog-copy.js.map

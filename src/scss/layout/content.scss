@@ -21,6 +21,7 @@
     padding:
       get-spacing('whitespace', 'grande')
       get-spacing('whitespace', 'petite');
+    position: relative;
     max-width: 64rem;
     width: 100%;
 
