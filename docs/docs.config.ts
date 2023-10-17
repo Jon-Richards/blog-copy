@@ -85,6 +85,16 @@ const CONFIG: Config = {
               'slug': '/docs/html-tags/text'
             }
           ]
+        },
+        {
+          'title': 'Components',
+          'slug': '/docs/components',
+          'subsections': [
+            {
+              'title': 'Meta',
+              'slug': '/docs/components/meta'
+            }
+          ]
         }
       ]
     }
