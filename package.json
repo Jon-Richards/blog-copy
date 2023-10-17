@@ -1,6 +1,6 @@
 {
   "name": "@jon-richards/blog-copy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A style guide, CSS, and other assets designed to facilitate extended reading.",
   "main": "index.js",
   "private": true,
