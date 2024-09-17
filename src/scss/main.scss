@@ -54,20 +54,21 @@
 
 @mixin render {
   .#{set-class('root')} {
-    @include reset;
     @include declare-color-properties;
     @include fonts.declare-font-properties;
     @include declare-spacing-properties;
-
-    &, *, *::before, *::after {
-      box-sizing: border-box;
-    }
 
     @include fonts.assign-font('copy', 'normal');
     font-size: 100%;
     min-height: 100vh;
     padding: 0;
     text-rendering: optimizeLegibility;
+
+    @include reset;
+
+    &, *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
     @include set-color-schemes((
       'light': (

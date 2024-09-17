@@ -76,11 +76,6 @@
  * when the used as a SASS library rather than a standalone CSS library.
  */
 .bc__root {
-  /* http://meyerweb.com/eric/tools/css/reset/ 
-     v2.0 | 20110126
-     License: none (public domain)
-  */
-  /* HTML5 display-role reset for older browsers */
   --bc__color__light--dark: hsl(30deg, 8%, 85%);
   --bc__color__light--mid: hsl(30deg, 8%, 90%);
   --bc__color__light--bright: hsl(30deg, 8%, 95%);
@@ -108,6 +103,11 @@
   min-height: 100vh;
   padding: 0;
   text-rendering: optimizeLegibility;
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+     v2.0 | 20110126
+     License: none (public domain)
+  */
+  /* HTML5 display-role reset for older browsers */
 }
 .bc__root html, .bc__root body, .bc__root div, .bc__root span, .bc__root applet, .bc__root object, .bc__root iframe,
 .bc__root h1, .bc__root h2, .bc__root h3, .bc__root h4, .bc__root h5, .bc__root h6, .bc__root p, .bc__root blockquote, .bc__root pre,
