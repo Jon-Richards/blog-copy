@@ -24,6 +24,7 @@
   }
 
   ul > li {
+    font-weight: 400;
     margin-bottom: calc(dimensions.get('petite') / 2);
 
     &:last-of-type {

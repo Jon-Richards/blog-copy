@@ -11,25 +11,10 @@
     display: inline-block;
     position: relative;
     text-decoration: none;
-  
-    &::before {
-      border: thin solid colors.get('light--dim');
-      content: '';
-      display: block;
-      height: calc(dimensions.get('petite') / 1.5);
-      left: -1rem;
-      position: absolute;
-      top: 0.3rem;
-      width: calc(dimensions.get('petite') / 1.5);
-    }
   }
   a:hover, a:focus, a:active {
     color: colors.get('accent--mid');
     outline: none;
-  
-    &::before {
-      border: thin solid colors.get('accent--mid');
-    }
   }
 </style>
 
